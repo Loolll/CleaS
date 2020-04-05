@@ -17,7 +17,7 @@ class ArgException(Exception):
 def create_parser():
     """Args parser"""
     parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--mode', required=True, help="""Programm mode (ex: python witproject.py -m 1): \n 
+    parser.add_argument('-m', '--mode', required=True, help="""Programm mode (ex: python main.py -m 1): \n 
     1(default): Say smth. Must be arg -a(--additional) SECONDS_FOR_SPEECH \n
     2: File .wav input. Must be arg -a(--additional) FILE_PATH""")
     parser.add_argument('-v', '--verbose', default=False, action='store_true', help="""
