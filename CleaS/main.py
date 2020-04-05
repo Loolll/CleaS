@@ -53,9 +53,9 @@ if __name__ == '__main__':
             count = 0
             buffer = ""
             for x in file_to_compare.read()+" ":
-                if x != " ":
+                if settings.ALLOWED_SYMBOLS.__contains__(x):
                     buffer += x
-                elif settings.ALLOWED_SYMBOLS.__contains__(x):
+                elif x == " ":
                     if buffer != "":
                         if words_in_wav.__contains__(buffer.lower()):
                             words_in_wav.remove(buffer.lower())
@@ -70,7 +70,7 @@ if __name__ == '__main__':
                 print("Perfect! 100%")
             else:
                 response = "Purity: {a}%".format(
-                    a=int(10000*(count/(len(words_in_wav)+len(words_in_compare))))/100) + \
+                    a=int(10000*(count/(len(words_in_wav)+len(words_in_compare)+count)))/100) + \
                         "\nExcess words that you said: " + " ".join(words_in_wav) + '.' + \
                         "\nExpected words that you should have said: " + " ".join(words_in_compare) + '.'
                 print(response)
